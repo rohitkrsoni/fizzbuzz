@@ -1,3 +1,4 @@
+using FizzBuzzProject.Models;
 using FizzBuzzProject.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -21,6 +22,7 @@ namespace FizzBuzzProject
             services.AddScoped<IRule, FizzRule>();
             services.AddScoped<IRule, BuzzRule>();
             services.AddScoped<IFizzBuzzService, FizzBuzzService>();
+            services.AddScoped<FizzBuzzViewModel, FizzBuzzViewModel>();
             services.AddMvc(options => options.EnableEndpointRouting = false);
         }
 
@@ -31,6 +33,7 @@ namespace FizzBuzzProject
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseStaticFiles();
             app.UseMvc(routes =>
             {
                 routes.MapRoute("default", "{Controller=FizzBuzz}/{action=Index}/{id?}");

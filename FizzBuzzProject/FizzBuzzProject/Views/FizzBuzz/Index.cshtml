@@ -1,0 +1,11 @@
+﻿@model FizzBuzzViewModel
+<form enctype="multipart/form-data" asp-controller="FizzBuzz" asp-action="index" method="post" class="mt-3">
+    <div class="form-group row text-center" >
+        <label asp-for="number" class="col-sm-2 col-form-label">Enter a Number</label>
+        <div class="col-sm-5">
+            <input asp-for="number" class="form-control" placeholder="Integer">
+            <span asp-validation-for="number" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Enter</button>
+    </div> 
+</form>

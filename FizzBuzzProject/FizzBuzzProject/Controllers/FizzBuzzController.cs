@@ -11,13 +11,12 @@ namespace FizzBuzzProject.Controllers
     public class FizzBuzzController: Controller
     {
         private readonly IFizzBuzzService service;
-        private readonly FizzBuzzViewModel _fizzBuzzViewModel;
 
-        public FizzBuzzController(IFizzBuzzService service,FizzBuzzViewModel fizzBuzzViewModel)
+        public FizzBuzzController(IFizzBuzzService service)
         {
             this.service = service;
-            _fizzBuzzViewModel = fizzBuzzViewModel;
         }
+        
         [HttpGet]
         public ViewResult Index()
         {
@@ -25,15 +24,14 @@ namespace FizzBuzzProject.Controllers
         }
 
         [HttpPost]
-        public IActionResult Index(FizzBuzzViewModel model)
+        public ViewResult Index(FizzBuzzViewModel model)
         {
             if(ModelState.IsValid==false)
             {
                 return View();
             }
-            _fizzBuzzViewModel.FizzBuzzNumbers = service.GetFizzBuzzNumbers(model.number);
-
-            return RedirectToAction("Result", _fizzBuzzViewModel);
+            model.FizzBuzzNumbers = service.GetFizzBuzzNumbers(model.number);
+            return View("Result", model);
         }
         public ViewResult Result(FizzBuzzViewModel fizzBuzzViewModel)
         {

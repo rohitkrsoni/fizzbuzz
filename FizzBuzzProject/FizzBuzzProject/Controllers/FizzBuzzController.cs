@@ -30,7 +30,7 @@ namespace FizzBuzzProject.Controllers
             {
                 return View();
             }
-            model.FizzBuzzNumbers = service.GetFizzBuzzNumbers(model.number);
+            model.FizzBuzzNumbers = service.GetFizzBuzzNumbers(model.User_Input??0);//setting user_Input as nullable and overriding the default errormessage when it is null by using Required attribute
             return View("Result", model);
         }
         public ViewResult Result(FizzBuzzViewModel fizzBuzzViewModel)

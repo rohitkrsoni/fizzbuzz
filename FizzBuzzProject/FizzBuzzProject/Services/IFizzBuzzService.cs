@@ -7,6 +7,6 @@ namespace FizzBuzzProject.Services
 {
     public interface IFizzBuzzService
     {
-        IList<string> GetFizzBuzzNumbers(int input);
+        IList<string> GetFizzBuzzNumbers(int user_Input);
     }
 }

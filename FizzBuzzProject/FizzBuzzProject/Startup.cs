@@ -22,7 +22,6 @@ namespace FizzBuzzProject
             services.AddScoped<IRule, FizzRule>();
             services.AddScoped<IRule, BuzzRule>();
             services.AddScoped<IFizzBuzzService, FizzBuzzService>();
-            services.AddScoped<FizzBuzzViewModel, FizzBuzzViewModel>();
             services.AddMvc(options => options.EnableEndpointRouting = false);
         }
 

@@ -8,8 +8,10 @@ namespace FizzBuzzProject.Models
 {
     public class FizzBuzzViewModel
     {
-        [Range(1,1000,ErrorMessage ="Value Should be between 1 to 1000")]
-        public int number { get; set; }
+        
+        [Range(1,1000,ErrorMessage ="Value should be between 1 and 1000")]
+        [Required(ErrorMessage = "Please Enter a Value")]
+        public int? User_Input { get; set; }
         public IList<String> FizzBuzzNumbers { get; set; }
     }
 }

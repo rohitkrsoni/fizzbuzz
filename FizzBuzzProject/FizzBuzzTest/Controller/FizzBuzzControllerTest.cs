@@ -23,7 +23,7 @@ namespace FizzBuzzTest
 
 
             //Act
-            ViewResult actualResult = controller.Index(new FizzBuzzViewModel { number = 1});
+            ViewResult actualResult = controller.Index(new FizzBuzzViewModel { User_Input = 1});
             var ActualModel = (FizzBuzzViewModel)actualResult.Model;
 
             //Assert
@@ -44,7 +44,7 @@ namespace FizzBuzzTest
 
 
             //Act
-            ViewResult actualResult = controller.Index(new FizzBuzzViewModel { number = 6 });
+            ViewResult actualResult = controller.Index(new FizzBuzzViewModel { User_Input = 6 });
             var ActualModel = (FizzBuzzViewModel)actualResult.Model;
 
             //Assert

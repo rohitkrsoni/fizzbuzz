@@ -13,9 +13,10 @@ namespace FizzBuzzProject.Services
         {
             rules = new List<IRule>
             {
+                new FizzBuzzRule(),
                 new FizzRule(),
-                new BuzzRule(),
-                new FizzBuzzRule()
+                new BuzzRule()
+                
             };
         }
         public IList<string> GetFizzBuzzNumbers(int input)

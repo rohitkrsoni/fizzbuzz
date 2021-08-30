@@ -4,30 +4,36 @@
     DateTime dateInput = DateTime.Today;
     DayOfWeek today = dateInput.DayOfWeek;
 }
-@if (today != DayOfWeek.Wednesday)//we can make method in FizzBuzzViewModel for checking for any day
-{
-    @foreach (var s in Model.FizzBuzzNumbers)
+<div class="col-sm-12 text-center">
+    <label class="col-sm-2 h5 ">Given Number : @Model.User_Input</label>
+    <a asp-controller="FizzBuzz" asp-action="index" class="btn btn-primary m-1">Change</a>
+</div>
+<div class="container ">
+    @if (today != DayOfWeek.Wednesday)//we can make method in FizzBuzzViewModel for checking for any day
     {
-        <h2 class="@s">@s</h2>
+        @foreach (var s in Model.FizzBuzzNumbers)
+        {
+            <h4 class="@s">@s</h4>
 
+        }
     }
-}
-else
-{
-    foreach (var s in Model.FizzBuzzNumbers)//we can make method in FizzBuzzViewModel for changing any value
+    else
     {
-        if (s == "Fizz")
+        foreach (var s in Model.FizzBuzzNumbers)//we can make method in FizzBuzzViewModel for changing any value
         {
-            <h2 class="@s">Wizz</h2>
-        }
-        else if (s == "Buzz")
-        {
-            <h2 class="@s">Wuzz</h2>
-        }
-        else
-        {
-            <h2 class="@s">@s</h2>
-        }
+            if (s == "Fizz")
+            {
+                <h2 class="@s">Wizz</h2>
+            }
+            else if (s == "Buzz")
+            {
+                <h2 class="@s">Wuzz</h2>
+            }
+            else
+            {
+                <h2 class="@s">@s</h2>
+            }
 
+        }
     }
-}
+</div>

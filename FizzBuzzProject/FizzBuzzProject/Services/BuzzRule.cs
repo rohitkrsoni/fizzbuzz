@@ -7,14 +7,18 @@ namespace FizzBuzzProject.Services
 {
     public class BuzzRule : IRule
     {
-        public string Execute()
+        public string Execute(IDayService dayService)
         {
-            return "Buzz";
+            if (dayService.GetTodayDay()!=3)
+                return "Buzz";
+            return "Wuzz";
         }
 
         public bool IsMatch(int number)
         {
             return (number % 5 == 0);
         }
+
+        
     }
 }

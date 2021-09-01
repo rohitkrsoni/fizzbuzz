@@ -7,7 +7,7 @@ namespace FizzBuzzProject.Services
 {
     public class FizzBuzzRule : IRule
     {
-        public string Execute()
+        public string Execute(IDayService dayService)
         {
             return "FizzBuzz";
         }
@@ -16,5 +16,6 @@ namespace FizzBuzzProject.Services
         {
             return number % 3 == 0 && number % 5 == 0;
         }
+
     }
 }

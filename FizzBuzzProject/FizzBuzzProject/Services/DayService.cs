@@ -5,8 +5,11 @@ using System.Threading.Tasks;
 
 namespace FizzBuzzProject.Services
 {
-    public interface IFizzBuzzService
+    public class DayService : IDayService
     {
-        IList<string> GetFizzBuzzNumbers(int user_Input,IDayService dayService);
+        public int GetTodayDay()
+        {
+            return (int)DateTime.Today.DayOfWeek;
+        }
     }
 }

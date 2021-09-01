@@ -13,63 +13,67 @@ namespace FizzBuzzTest.Service
     public class BuzzRuleTest
     {
         public Mock<IRule> mockService;
-        [TestMethod]
-        public void WhetherBuzzRuleProvidesExpectedOutput_ForMultiplesOf5_Passing()
-        {
+        public Mock<IDayService> mockDayService;
 
+        [TestMethod]
+        public void Whether_IsMatch_Provides_Expected_Value_Multiples_Of_5()
+        {
             //Arrange
             var mockService = new Mock<IRule>();
             mockService.Setup(x => x.IsMatch(It.Is<int>(i => i % 5 == 0))).Returns(true);
-            mockService.Setup(x => x.Execute()).Returns("Buzz");
+
 
             //Act
-            string actual = null;
-            int input = 5;//Enter input which is divisible by 5
-            if (mockService.Object.IsMatch(input))
-            {
-                actual = mockService.Object.Execute();
-            }
-            else
-            {
-                actual = input.ToString();
-            }
+            bool actual = mockService.Object.IsMatch(5);
 
+            //Assert
+            Assert.IsTrue(actual);
+        }
+        [TestMethod]
+        public void Whether_IsMatch_Provides_Expected_Value_Non_Multiples_Of_5()
+        {
+            //Arrange
+            var mockService = new Mock<IRule>();
+            mockService.Setup(x => x.IsMatch(It.Is<int>(i => i % 5 == 0))).Returns(true);
+
+
+            //Act
+            bool actual = mockService.Object.IsMatch(3);
+
+            //Assert
+            Assert.IsTrue(!actual);
+        }
+        [TestMethod]
+        public void Whether_Execute_Provides_Expected_Value_For_Wednesday()
+        {
+            //Arrange
+            var mockService = new Mock<IRule>();
+            var mockDayService = new Mock<IDayService>();
+            mockDayService.Setup(x => x.GetTodayDay()).Returns(3);
+            mockService.Setup(x => x.Execute(It.Is<IDayService>(x => x.GetTodayDay() == 3))).Returns("Wuzz");
+
+
+            //Act
+            string actual = mockService.Object.Execute(mockDayService.Object);
+
+            //Assert
+            Assert.AreEqual(actual, "Wuzz");
+        }
+        [TestMethod]
+        public void Whether_Execute_Provides_Expected_Value_For_Non_Wednesday()
+        {
+            //Arrange
+            var mockService = new Mock<IRule>();
+            var mockDayService = new Mock<IDayService>();
+            mockDayService.Setup(x => x.GetTodayDay()).Returns(4);
+            mockService.Setup(x => x.Execute(It.Is<IDayService>(x => x.GetTodayDay() != 3))).Returns("Buzz");
+
+
+            //Act
+            string actual = mockService.Object.Execute(mockDayService.Object);
 
             //Assert
             Assert.AreEqual(actual, "Buzz");
-            mockService.Verify(x => x.IsMatch(It.IsAny<int>()), Times.Once);
-            mockService.Verify(x => x.Execute(), Times.Once);
-
-
-        }
-        [TestMethod]
-        public void WhetherFizzRuleProvidesExpectedOutput_ForNonMultiplesOf5_Failing()
-        {
-
-            //Arrange
-            var mockService = new Mock<IRule>();
-            mockService.Setup(x => x.IsMatch(It.Is<int>(i => i % 5 == 0))).Returns(true);
-            mockService.Setup(x => x.Execute()).Returns("Buzz");
-
-            //Act
-            string actual = null;
-            int input = 11;//Enter input which is not divisible by 5
-            if (mockService.Object.IsMatch(input))
-            {
-                actual = mockService.Object.Execute();
-            }
-            else
-            {
-                actual = input.ToString();
-            }
-
-
-            //Assert
-            Assert.AreNotEqual(actual, "Buzz");//Passes if Buzz is not returned
-            mockService.Verify(x => x.IsMatch(It.IsAny<int>()), Times.Once);
-            mockService.Verify(x => x.Execute(), Times.Never);
-
-
         }
 
 

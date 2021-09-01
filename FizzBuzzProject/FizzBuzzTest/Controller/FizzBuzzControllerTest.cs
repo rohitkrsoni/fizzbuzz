@@ -13,13 +13,14 @@ namespace FizzBuzzTest
     public class FizzBuzzControllerTest
     {
         [TestMethod]
-        public void WhetherModelIsUpdatedWithExpwctedFizzBuzzNumbers_InputIs1()
+        public void Whether_Model_Is_Updated_With_Expected_FizzBuzzNumbers_InputIs1()
         {
             //Arrange
             var mockService = new Mock<IFizzBuzzService>();
-            mockService.Setup(x => x.GetFizzBuzzNumbers(It.IsAny<int>())).Returns(new List<string> { "1" });
+            var mockDayService = new Mock<IDayService>();
+            mockService.Setup(x => x.GetFizzBuzzNumbers(It.IsAny<int>(),mockDayService.Object)).Returns(new List<string> { "1" });
             Console.WriteLine(mockService.Object.GetType());
-            var controller = new FizzBuzzController(mockService.Object);
+            var controller = new FizzBuzzController(mockService.Object,mockDayService.Object);
 
 
             //Act
@@ -31,16 +32,17 @@ namespace FizzBuzzTest
             Assert.AreEqual(actualResult.ViewName, "Result");
             CollectionAssert.AreEqual((List<string>)ActualModel.FizzBuzzNumbers, (new List<string> { "1" }));
             
-            mockService.Verify(x => x.GetFizzBuzzNumbers(It.IsAny<int>()), Times.Once);
+            mockService.Verify(x => x.GetFizzBuzzNumbers(It.IsAny<int>(),mockDayService.Object), Times.Once);
         }
         [TestMethod]
-        public void WhetherModelIsUpdatedWithExpwctedFizzBuzzNumbers_InputIs6()
+        public void Whether_Model_Is_Updated_With_Expected_FizzBuzzNumbers_InputIs6()
         {
             //Arrange
             var mockService = new Mock<IFizzBuzzService>();
-            mockService.Setup(x => x.GetFizzBuzzNumbers(6)).Returns(new List<string> { "1","2","Fizz","4","Buzz","Fizz" });
+            var mockDayService = new Mock<IDayService>();
+            mockService.Setup(x => x.GetFizzBuzzNumbers(6,mockDayService.Object)).Returns(new List<string> { "1","2","Fizz","4","Buzz","Fizz" });
             Console.WriteLine(mockService.Object.GetType());
-            var controller = new FizzBuzzController(mockService.Object);
+            var controller = new FizzBuzzController(mockService.Object, mockDayService.Object);
 
 
             //Act
@@ -52,7 +54,7 @@ namespace FizzBuzzTest
             Assert.AreEqual(actualResult.ViewName, "Result");
             CollectionAssert.AreEqual((List<string>)ActualModel.FizzBuzzNumbers, (new List<string> { "1", "2", "Fizz", "4", "Buzz", "Fizz" }));
 
-            mockService.Verify(x => x.GetFizzBuzzNumbers(It.IsAny<int>()), Times.Once);
+            mockService.Verify(x => x.GetFizzBuzzNumbers(It.IsAny<int>(),mockDayService.Object), Times.Once);
         }
 
 

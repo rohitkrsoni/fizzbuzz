@@ -11,10 +11,12 @@ namespace FizzBuzzProject.Controllers
     public class FizzBuzzController: Controller
     {
         private readonly IFizzBuzzService service;
+        private readonly IDayService dayService;
 
-        public FizzBuzzController(IFizzBuzzService service)
+        public FizzBuzzController(IFizzBuzzService service,IDayService dayService)
         {
             this.service = service;
+            this.dayService = dayService;
         }
         
         [HttpGet]
@@ -30,7 +32,7 @@ namespace FizzBuzzProject.Controllers
             {
                 return View();
             }
-            model.FizzBuzzNumbers = service.GetFizzBuzzNumbers(model.User_Input??0);//setting user_Input as nullable and overriding the default errormessage when it is null by using Required attribute
+            model.FizzBuzzNumbers = service.GetFizzBuzzNumbers(model.User_Input??0,dayService);//setting user_Input as nullable and overriding the default errormessage when it is null by using Required attribute
             return View("Result", model);
         }
         public ViewResult Result(FizzBuzzViewModel fizzBuzzViewModel)

@@ -10,9 +10,10 @@
 </div>
 <div class="container ">
 
-    @foreach (var s in Model.FizzBuzzNumbers)
+    @foreach (var s in ViewBag.PagedList)
     {
 <h4 class="@s">@s</h4>}
 </div>
-@Html.PagedListPager((IPagedList)ViewBag.PagedList, page => Url.Action("ResultViewWithPagination", new { @page=page, @fizzBuzzViewModel=Model }))
-
+<div class="text-center h3">
+    @Html.PagedListPager((IPagedList)ViewBag.PagedList, page => Url.Action("ResultViewWithPagination", new { @page = page, @fizzBuzzViewModel = Model }))
+</div>

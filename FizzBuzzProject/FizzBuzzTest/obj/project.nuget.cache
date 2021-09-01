@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "Ao2sinZ4gLcj7WiX7oHLAhNJv++ZZI17YY7J0QXKla6c3FSuU+7Aq8oJPufGqmNboo9Biz/5Q9PIhvFe8k3cdA==",
+  "dgSpecHash": "fqGYm77JYlKaJZP87yIN70MlaxBmmJ2NUyNXAo3kUcTgkQKrkJX3zM8iyOHSq9EaM529GMR8K9Pjzfkl0a2LYg==",
   "success": true,
   "projectFilePath": "C:\\Users\\krroh\\Documents\\fizzbuzz\\FizzBuzzProject\\FizzBuzzTest\\FizzBuzzTest.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\krroh\\.nuget\\packages\\castle.core\\4.4.0\\castle.core.4.4.0.nupkg.sha512",
     "C:\\Users\\krroh\\.nuget\\packages\\coverlet.collector\\3.0.2\\coverlet.collector.3.0.2.nupkg.sha512",
+    "C:\\Users\\krroh\\.nuget\\packages\\jetbrains.annotations\\2021.1.0\\jetbrains.annotations.2021.1.0.nupkg.sha512",
     "C:\\Users\\krroh\\.nuget\\packages\\microsoft.codecoverage\\16.9.4\\microsoft.codecoverage.16.9.4.nupkg.sha512",
     "C:\\Users\\krroh\\.nuget\\packages\\microsoft.csharp\\4.0.1\\microsoft.csharp.4.0.1.nupkg.sha512",
     "C:\\Users\\krroh\\.nuget\\packages\\microsoft.net.test.sdk\\16.9.4\\microsoft.net.test.sdk.16.9.4.nupkg.sha512",
@@ -99,7 +100,9 @@
     "C:\\Users\\krroh\\.nuget\\packages\\system.threading.timer\\4.3.0\\system.threading.timer.4.3.0.nupkg.sha512",
     "C:\\Users\\krroh\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\krroh\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\krroh\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512"
+    "C:\\Users\\krroh\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
+    "C:\\Users\\krroh\\.nuget\\packages\\x.pagedlist\\8.1.0\\x.pagedlist.8.1.0.nupkg.sha512",
+    "C:\\Users\\krroh\\.nuget\\packages\\x.pagedlist.mvc.core\\8.1.0\\x.pagedlist.mvc.core.8.1.0.nupkg.sha512"
   ],
   "logs": []
 }

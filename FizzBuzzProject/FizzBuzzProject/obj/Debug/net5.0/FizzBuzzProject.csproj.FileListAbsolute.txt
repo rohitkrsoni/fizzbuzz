@@ -37,3 +37,8 @@ C:\Users\krroh\Documents\fizzbuzz\FizzBuzzProject\FizzBuzzProject\obj\Debug\net5
 C:\Users\krroh\Documents\fizzbuzz\FizzBuzzProject\FizzBuzzProject\obj\Debug\net5.0\FizzBuzzProject.genruntimeconfig.cache
 C:\Users\krroh\Documents\fizzbuzz\FizzBuzzProject\FizzBuzzProject\obj\Debug\net5.0\FizzBuzzProject.csproj.CopyComplete
 C:\Users\krroh\Documents\fizzbuzz\FizzBuzzProject\FizzBuzzProject\obj\Debug\net5.0\FizzBuzzProject.csproj.AssemblyReference.cache
+C:\Users\krroh\Documents\fizzbuzz\FizzBuzzProject\FizzBuzzProject\bin\Debug\net5.0\JetBrains.Annotations.dll
+C:\Users\krroh\Documents\fizzbuzz\FizzBuzzProject\FizzBuzzProject\bin\Debug\net5.0\X.PagedList.dll
+C:\Users\krroh\Documents\fizzbuzz\FizzBuzzProject\FizzBuzzProject\bin\Debug\net5.0\X.PagedList.Mvc.Core.dll
+C:\Users\krroh\Documents\fizzbuzz\FizzBuzzProject\FizzBuzzProject\obj\Debug\net5.0\FizzBuzzProject.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\krroh\Documents\fizzbuzz\FizzBuzzProject\FizzBuzzProject\obj\Debug\net5.0\Razor\Views\FizzBuzz\ResultViewWithPagination.cshtml.g.cs

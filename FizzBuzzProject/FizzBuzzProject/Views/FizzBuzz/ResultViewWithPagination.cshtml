@@ -1,7 +1,9 @@
 ﻿@model FizzBuzzViewModel
 @using System
+@using X.PagedList;
+@using X.PagedList.Mvc.Core;
 @{ DateTime dateInput = DateTime.Today;
-                DayOfWeek today = dateInput.DayOfWeek; }
+    DayOfWeek today = dateInput.DayOfWeek; }
 <div class="col-sm-12 text-center">
     <label class="col-sm-2 h5 ">Given Number : @Model.User_Input</label>
     <a asp-controller="FizzBuzz" asp-action="index" class="btn btn-primary m-1">Change</a>
@@ -10,7 +12,7 @@
 
     @foreach (var s in Model.FizzBuzzNumbers)
     {
-        <h4 class="@s">@s</h4>
-      }
-
+<h4 class="@s">@s</h4>}
 </div>
+@Html.PagedListPager((IPagedList)ViewBag.PagedList, page => Url.Action("ResultViewWithPagination", new { @page=page, @fizzBuzzViewModel=Model }))
+

@@ -50,11 +50,11 @@ namespace FizzBuzzTest.Service
             var mockService = new Mock<IRule>();
             var mockDayService = new Mock<IDayService>();
             mockDayService.Setup(x => x.GetTodayDay()).Returns(3);
-            mockService.Setup(x => x.Execute(It.Is<IDayService>(x => x.GetTodayDay() == 3))).Returns("Wuzz");
+            mockService.Setup(x => x.Execute()).Returns(mockDayService.Object.GetTodayDay() != 3 ? "Buzz" : "Wuzz");
 
 
             //Act
-            string actual = mockService.Object.Execute(mockDayService.Object);
+            string actual = mockService.Object.Execute();
 
             //Assert
             Assert.AreEqual(actual, "Wuzz");
@@ -66,11 +66,11 @@ namespace FizzBuzzTest.Service
             var mockService = new Mock<IRule>();
             var mockDayService = new Mock<IDayService>();
             mockDayService.Setup(x => x.GetTodayDay()).Returns(4);
-            mockService.Setup(x => x.Execute(It.Is<IDayService>(x => x.GetTodayDay() != 3))).Returns("Buzz");
+            mockService.Setup(x => x.Execute()).Returns(mockDayService.Object.GetTodayDay() != 3 ? "Buzz" : "Wuzz");
 
 
             //Act
-            string actual = mockService.Object.Execute(mockDayService.Object);
+            string actual = mockService.Object.Execute();
 
             //Assert
             Assert.AreEqual(actual, "Buzz");

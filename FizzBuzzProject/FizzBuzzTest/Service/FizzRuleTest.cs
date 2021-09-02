@@ -14,7 +14,7 @@ namespace FizzBuzzTest.Service
     {
         public Mock<IRule> mockService;
         public Mock<IDayService> mockDayService;
-        
+
         [TestMethod]
         public void Whether_IsMatch_Provides_Expected_Value_Multiples_Of_3()
         {
@@ -50,11 +50,11 @@ namespace FizzBuzzTest.Service
             var mockService = new Mock<IRule>();
             var mockDayService = new Mock<IDayService>();
             mockDayService.Setup(x => x.GetTodayDay()).Returns(3);
-            mockService.Setup(x => x.Execute(It.Is<IDayService>(x=>x.GetTodayDay()==3))).Returns("Wizz");
+            mockService.Setup(x => x.Execute()).Returns(mockDayService.Object.GetTodayDay() != 3 ? "Fizz" : "Wizz");
 
 
             //Act
-            string actual = mockService.Object.Execute(mockDayService.Object);
+            string actual = mockService.Object.Execute();
 
             //Assert
             Assert.AreEqual(actual, "Wizz");
@@ -66,11 +66,11 @@ namespace FizzBuzzTest.Service
             var mockService = new Mock<IRule>();
             var mockDayService = new Mock<IDayService>();
             mockDayService.Setup(x => x.GetTodayDay()).Returns(4);
-            mockService.Setup(x => x.Execute(It.Is<IDayService>(x => x.GetTodayDay() != 3))).Returns("Fizz");
+            mockService.Setup(x => x.Execute()).Returns(mockDayService.Object.GetTodayDay() != 3 ? "Fizz" : "Wizz");
 
 
             //Act
-            string actual = mockService.Object.Execute(mockDayService.Object);
+            string actual = mockService.Object.Execute();
 
             //Assert
             Assert.AreEqual(actual, "Fizz");

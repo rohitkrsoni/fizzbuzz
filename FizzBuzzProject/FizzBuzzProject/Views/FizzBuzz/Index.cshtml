@@ -1,5 +1,7 @@
 ﻿@model FizzBuzzViewModel
-<form  asp-controller="FizzBuzz" asp-action="index" method="post" class="">
+@using X.PagedList;
+@using X.PagedList.Mvc.Core;
+<form asp-controller="FizzBuzz" asp-action="index" method="post" class="">
     <div class="form-group row container col-sm-12 text-center">
         <label asp-for="User_Input" class=" col-form-label col-sm-3">Enter a Number</label>
         <div class="col-sm-5 col">
@@ -8,5 +10,20 @@
         <button type="submit" class="btn btn-primary col-sm-1">Enter</button>
         <span asp-validation-for="User_Input" class="text-danger text-center col-sm-3"></span>
     </div>
-    
+
 </form>
+@{ if (Model != null && Model.FizzBuzzNumbers != null)
+    {
+        <div class="container ">
+
+            @foreach (var s in ViewBag.PagedList)
+            {
+                <h4 class="@s">@s</h4>}
+
+        </div>
+        <div class="h3">
+            @Html.PagedListPager((IPagedList)ViewBag.PagedList, page =>
+                        Url.Action("Index", new { @page = page, User_Input = @Model.User_Input }))
+        </div>
+    }
+}

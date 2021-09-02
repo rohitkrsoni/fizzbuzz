@@ -111,3 +111,6 @@ C:\Users\krroh\Documents\fizzbuzz\FizzBuzzProject\FizzBuzzTest\obj\Debug\net5.0\
 C:\Users\krroh\Documents\fizzbuzz\FizzBuzzProject\FizzBuzzTest\obj\Debug\net5.0\ref\FizzBuzzTest.dll
 C:\Users\krroh\Documents\fizzbuzz\FizzBuzzProject\FizzBuzzTest\obj\Debug\net5.0\FizzBuzzTest.pdb
 C:\Users\krroh\Documents\fizzbuzz\FizzBuzzProject\FizzBuzzTest\obj\Debug\net5.0\FizzBuzzTest.genruntimeconfig.cache
+C:\Users\krroh\Documents\fizzbuzz\FizzBuzzProject\FizzBuzzTest\bin\Debug\net5.0\JetBrains.Annotations.dll
+C:\Users\krroh\Documents\fizzbuzz\FizzBuzzProject\FizzBuzzTest\bin\Debug\net5.0\X.PagedList.dll
+C:\Users\krroh\Documents\fizzbuzz\FizzBuzzProject\FizzBuzzTest\bin\Debug\net5.0\X.PagedList.Mvc.Core.dll

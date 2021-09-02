@@ -18,6 +18,7 @@ namespace FizzBuzzProject
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+
             services.AddScoped<IDayService, DayService>();
             services.AddScoped<IRule, FizzBuzzRule>();
             services.AddScoped<IRule, FizzRule>();
@@ -36,7 +37,7 @@ namespace FizzBuzzProject
             app.UseStaticFiles();
             app.UseMvc(routes =>
             {
-                routes.MapRoute("default", "{Controller=FizzBuzz}/{action=Index}/{id?}");
+                routes.MapRoute("default", "{Controller=FizzBuzz}/{action=Home}");
             });
         
                 

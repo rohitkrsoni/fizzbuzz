@@ -49,17 +49,14 @@ namespace FizzBuzzTest.Service
         {
             //Arrange
             var mockService = new Mock<IRule>();
-            var mockDayService = new Mock<IDayService>();
-            mockDayService.Setup(x => x.GetTodayDay()).Returns(3);
-            mockService.Setup(x => x.Execute(mockDayService.Object)).Returns("FizzBuzz");
+            mockService.Setup(x => x.Execute()).Returns("FizzBuzz");
 
 
             //Act
-            string actual = mockService.Object.Execute(mockDayService.Object);
+            string actual = mockService.Object.Execute();
 
             //Assert
             Assert.AreEqual(actual, "FizzBuzz");
         }
-        
     }
 }

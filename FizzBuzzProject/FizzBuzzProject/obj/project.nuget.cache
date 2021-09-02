@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "mHcK6Snx1gCnwLugkJzrTxoJW7rQLs3NAoH1CZWgYpvj04l4+5gUklYfRW5Nx1rkziSZ8vqb7IHTPLfgZXTSpA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\krroh\\Documents\\fizzbuzz\\FizzBuzzProject\\FizzBuzzProject\\FizzBuzzProject.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\krroh\\.nuget\\packages\\jetbrains.annotations\\2021.1.0\\jetbrains.annotations.2021.1.0.nupkg.sha512",
+    "C:\\Users\\krroh\\.nuget\\packages\\x.pagedlist\\8.1.0\\x.pagedlist.8.1.0.nupkg.sha512",
+    "C:\\Users\\krroh\\.nuget\\packages\\x.pagedlist.mvc.core\\8.1.0\\x.pagedlist.mvc.core.8.1.0.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -47,6 +47,7 @@ Thumbs.db
 *.flv
 *.mov
 *.wmv
+*/.gitignore
 .gitignore
 *.gitignore
 */bin/
@@ -56,3 +57,5 @@ Thumbs.db
 */packages/
 */FizzBuzzProject/packages/
 */FizzBuzzProject/.vs/
+*/FizzBuzzProject/FizzBuzzProject/bin
+*/FizzBuzzProject/FizzBuzzProject/obj

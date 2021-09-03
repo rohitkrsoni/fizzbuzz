@@ -1,29 +1,34 @@
 ﻿@model FizzBuzzViewModel
 @using X.PagedList;
 @using X.PagedList.Mvc.Core;
+@{
+    ViewBag.Title = "Fizz Buzz";
+}
 <form asp-controller="FizzBuzz" asp-action="index" method="post" class="">
     <div class="form-group row container col-sm-12 text-center">
-        <label asp-for="User_Input" class=" col-form-label col-sm-3">Enter a Number</label>
+        <label asp-for="UserInput" class=" col-form-label col-sm-3">Enter a Number</label>
         <div class="col-sm-5 col">
-            <input asp-for="User_Input" class="form-control" placeholder="Integer">
+            <input asp-for="UserInput" class="form-control" placeholder="Integer">
         </div>
         <button type="submit" class="btn btn-primary col-sm-1">Enter</button>
-        <span asp-validation-for="User_Input" class="text-danger text-center col-sm-3"></span>
+        <span asp-validation-for="UserInput" class="text-danger text-center col-sm-3"></span>
     </div>
 
 </form>
+<hr>
 @{ if (Model != null && Model.FizzBuzzNumbers != null)
     {
         <div class="container ">
 
-            @foreach (var s in ViewBag.PagedList)
+            @foreach (var s in Model.FizzBuzzNumbers)
             {
                 <h4 class="@s">@s</h4>}
 
         </div>
-        <div class="h3">
-            @Html.PagedListPager((IPagedList)ViewBag.PagedList, page =>
-                        Url.Action("Index", new { @page = page, User_Input = @Model.User_Input }))
+        <div class="pagination h4" style="margin:auto;width:0%;">
+            @Html.PagedListPager((IPagedList)Model.FizzBuzzNumbers, page =>
+                        Url.Action("Index", new { page, Model.UserInput }))
         </div>
+
     }
 }

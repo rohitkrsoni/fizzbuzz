@@ -13,7 +13,7 @@ namespace FizzBuzzProject.Services
         {
             this.DayService = DayService;
         }
-        
+
         public string Execute()
         {
             if (DayService.GetTodayDay() == 3)

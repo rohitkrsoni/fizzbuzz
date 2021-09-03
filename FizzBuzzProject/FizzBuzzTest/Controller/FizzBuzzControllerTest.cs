@@ -6,6 +6,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace FizzBuzzTest
 {
@@ -22,14 +23,15 @@ namespace FizzBuzzTest
 
 
             //Act
-            ViewResult actualResult = controller.Index(1,null);
+            ViewResult actualResult = controller.Index(1, null);
             var ActualModel = (FizzBuzzViewModel)actualResult.Model;
+            var numbers = ActualModel.FizzBuzzNumbers.ToList();
 
             //Assert
 
-            Assert.AreEqual("Index",actualResult.ViewName );
-            CollectionAssert.AreEqual((List<string>)ActualModel.FizzBuzzNumbers, (new List<string> { "1" }));
-            
+            Assert.AreEqual("Index", actualResult.ViewName);
+            CollectionAssert.AreEqual(numbers, (new List<string> { "1" }));
+
             mockService.Verify(x => x.GetFizzBuzzNumbers(It.IsAny<int>()), Times.Once);
         }
         [TestMethod]
@@ -37,18 +39,19 @@ namespace FizzBuzzTest
         {
             //Arrange
             var mockService = new Mock<IFizzBuzzService>();
-            mockService.Setup(x => x.GetFizzBuzzNumbers(6)).Returns(new List<string> { "1","2","Fizz","4","Buzz","Fizz" });
+            mockService.Setup(x => x.GetFizzBuzzNumbers(6)).Returns(new List<string> { "1", "2", "Fizz", "4", "Buzz", "Fizz" });
             var controller = new FizzBuzzController(mockService.Object);
 
 
             //Act
-            ViewResult actualResult = controller.Index(6,null);
+            ViewResult actualResult = controller.Index(6, null);
             var ActualModel = (FizzBuzzViewModel)actualResult.Model;
+            var numbers = ActualModel.FizzBuzzNumbers.ToList();
 
             //Assert
 
-            Assert.AreEqual("Index",actualResult.ViewName);
-            CollectionAssert.AreEqual((List<string>)ActualModel.FizzBuzzNumbers, (new List<string> { "1", "2", "Fizz", "4", "Buzz", "Fizz" }));
+            Assert.AreEqual("Index", actualResult.ViewName);
+            CollectionAssert.AreEqual(numbers, new List<string> { "1", "2", "Fizz", "4", "Buzz", "Fizz" });
 
             mockService.Verify(x => x.GetFizzBuzzNumbers(It.IsAny<int>()), Times.Once);
         }

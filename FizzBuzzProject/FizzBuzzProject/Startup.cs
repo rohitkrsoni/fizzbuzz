@@ -37,19 +37,8 @@ namespace FizzBuzzProject
             app.UseStaticFiles();
             app.UseMvc(routes =>
             {
-                routes.MapRoute("default", "{Controller=FizzBuzz}/{action=Home}");
+                routes.MapRoute("default", "{Controller=FizzBuzz}/{action=Index}");
             });
-        
-                
-            /*app.UseRouting();
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapGet("/", async context =>
-                {
-                    await context.Response.WriteAsync("Hello World!");
-                });
-            });*/
         }
     }
 }

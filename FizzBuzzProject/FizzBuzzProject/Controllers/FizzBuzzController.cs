@@ -9,7 +9,7 @@ using X.PagedList;
 
 namespace FizzBuzzProject.Controllers
 {
-    public class FizzBuzzController: Controller
+    public class FizzBuzzController : Controller
     {
         private readonly IFizzBuzzService service;
 
@@ -18,23 +18,17 @@ namespace FizzBuzzProject.Controllers
             this.service = service;
         }
 
-        [HttpGet]
-        public ViewResult Home()
-        {
-            return View("Index");
-        }
-        [HttpGet]
-        public ViewResult Index(int User_Input, int? page)
-        {
 
-            FizzBuzzViewModel fizzBuzzViewModel = new() { User_Input = User_Input };
-            fizzBuzzViewModel.FizzBuzzNumbers = 
-                service.GetFizzBuzzNumbers(User_Input);
+        [HttpGet]
+        public ViewResult Index(int UserInput, int? page)
+        {
+            if (UserInput == 0) return View();
+            FizzBuzzViewModel fizzBuzzViewModel = new() { UserInput = UserInput };
+            var numbers =
+                service.GetFizzBuzzNumbers(UserInput);
             var pageNumber = page ?? 1;
-            IQueryable<string> numbersQueryble = fizzBuzzViewModel.FizzBuzzNumbers.AsQueryable();
-            IPagedList<string> PagedList = numbersQueryble.ToPagedList(pageNumber, 20);
-            ViewBag.PagedList = PagedList;
-            return View("Index",fizzBuzzViewModel);
+            fizzBuzzViewModel.FizzBuzzNumbers = numbers.ToPagedList(pageNumber, 20);
+            return View("Index", fizzBuzzViewModel);
 
         }
         [HttpPost]
@@ -44,7 +38,7 @@ namespace FizzBuzzProject.Controllers
             {
                 return View();
             }
-            return RedirectToAction("Index", new { User_Input = fizzBuzzViewModel.User_Input,page = 1 });
+            return RedirectToAction("Index", new { fizzBuzzViewModel.UserInput, page = 1 });
 
         }
     }

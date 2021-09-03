@@ -7,7 +7,7 @@ namespace FizzBuzzProject.Services
 {
     public interface IRule
     {
-        
+
         bool IsMatch(int number);
         string Execute();
     }

@@ -13,10 +13,10 @@ namespace FizzBuzzProject.Services
         {
             this.rules = rules;
         }
-        public IList<string> GetFizzBuzzNumbers(int input)
+        public IEnumerable<string> GetFizzBuzzNumbers(int input)
         {
             var fizzBuzzNumbers = new List<string>();
-            for(var i = 1; i <=input; i++)
+            for (var i = 1; i <= input; i++)
             {
                 var applicableRules = rules.FirstOrDefault(x => x.IsMatch(i));
                 var fizzBuzzNumber = applicableRules != null ? applicableRules.Execute() : i.ToString();

@@ -76,6 +76,7 @@ namespace FizzBuzzTest
         [DataRow(25,2,new string[] { "21","22","23","24","25"})]
         public void rest(int numbers,int page,string[] expectations)
         {
+            //Arrange
             var mockService = new Mock<IFizzBuzzService>();
             var FizzBuzzNumbers = new List<String>();
             for (int number = 1; number <= numbers; number++)
@@ -85,11 +86,11 @@ namespace FizzBuzzTest
             mockService.Setup(x => x.GetFizzBuzzNumbers(It.IsAny<int>())).Returns(FizzBuzzNumbers);
             var controller = new FizzBuzzController(mockService.Object);
 
-
+            //Act
             ViewResult actualResult = controller.PageImplement(1,page);
             var actualModel = actualResult.Model as FizzBuzzViewModel;
 
-
+            //Assert
             Assert.AreEqual("Index", actualResult.ViewName);
             CollectionAssert.AreEqual(actualModel.FizzBuzzNumbers.ToList(), new List<string>(expectations));
 

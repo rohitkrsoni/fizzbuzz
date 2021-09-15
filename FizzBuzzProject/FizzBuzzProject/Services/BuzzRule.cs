@@ -14,14 +14,14 @@ namespace FizzBuzzProject.Services
         }
         public string Execute()
         {
-            if (DayService.GetTodayDay() == 3)
+            if (DayService.GetTodayDay() == DayOfWeek.Wednesday)
                 return "Wuzz";
             return "Buzz";
         }
 
         public bool IsMatch(int number)
         {
-            return (number % 5 == 0);
+            return (number % 5 == 0&& number%3!=0);
         }
     }
 }

@@ -7,6 +7,6 @@ namespace FizzBuzzProject.Services
 {
     public interface IDayService
     {
-        public int GetTodayDay();
+        public DayOfWeek GetTodayDay();
     }
 }

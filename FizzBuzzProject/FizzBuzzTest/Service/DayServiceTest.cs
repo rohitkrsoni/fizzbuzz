@@ -16,29 +16,15 @@ namespace FizzBuzzTest.Service
         public void Whether_GetTodayDay_Provides_Expected_Value_For_Wednesday()
         {
             //Arrange
-            var mockService = new Mock<IDayService>();
-            mockService.Setup(x => x.GetTodayDay()).Returns((int)DayOfWeek.Wednesday);
-            int expected = 3;
+            var dayService = new DayService();
 
             //Act
-            int actual = mockService.Object.GetTodayDay();
+            DayOfWeek actual = dayService.GetTodayDay();
+            DayOfWeek expected = DateTime.Today.DayOfWeek;
 
             //Assert
-            Assert.AreEqual(actual, expected);
+            Assert.AreEqual(expected, actual);
         }
-        [TestMethod]
-        public void Whether_GetTodayDay_Provides_Expected_Value_For_Non_Wednesday()
-        {
-            //Arrange
-            var mockService = new Mock<IDayService>();
-            mockService.Setup(x => x.GetTodayDay()).Returns((int)DayOfWeek.Monday);
-            int notExpected = 3;
-
-            //Act
-            int actual = mockService.Object.GetTodayDay();
-
-            //Assert
-            Assert.AreNotEqual(actual, notExpected);
-        }
+       
     }
 }

@@ -20,26 +20,30 @@ namespace FizzBuzzProject.Controllers
 
 
         [HttpGet]
-        public ViewResult Index(int UserInput, int? page)
+        public ViewResult Index()
         {
-            if (UserInput == 0) return View();
+            return View("Index");
+
+        }
+        [HttpPost]
+        public ActionResult Index(FizzBuzzViewModel fizzBuzzViewModel)
+        {
+            
+            if (ModelState.IsValid == false)
+            {
+                return View("Index");
+            }
+            return RedirectToAction("PageImplement", new {fizzBuzzViewModel.UserInput });
+        }
+        [HttpGet]
+        public ViewResult PageImplement(int UserInput,int? page)
+        {
             FizzBuzzViewModel fizzBuzzViewModel = new() { UserInput = UserInput };
             var numbers =
                 service.GetFizzBuzzNumbers(UserInput);
             var pageNumber = page ?? 1;
             fizzBuzzViewModel.FizzBuzzNumbers = numbers.ToPagedList(pageNumber, 20);
             return View("Index", fizzBuzzViewModel);
-
-        }
-        [HttpPost]
-        public IActionResult Index(FizzBuzzViewModel fizzBuzzViewModel)
-        {
-            if (ModelState.IsValid == false)
-            {
-                return View();
-            }
-            return RedirectToAction("Index", new { fizzBuzzViewModel.UserInput, page = 1 });
-
         }
     }
 }

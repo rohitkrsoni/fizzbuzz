@@ -20,14 +20,14 @@
     {
         <div class="container ">
 
-            @foreach (var s in Model.FizzBuzzNumbers)
+            @foreach (var fizzBuzzNumber in Model.FizzBuzzNumbers)
             {
-                <h4 class="@s">@s</h4>}
+                <h4 class="@fizzBuzzNumber">@fizzBuzzNumber</h4>}
 
         </div>
-        <div class="pagination h4" style="margin:auto;width:0%;">
+        <div class="cen pagination h4">
             @Html.PagedListPager((IPagedList)Model.FizzBuzzNumbers, page =>
-                        Url.Action("Index", new { page, Model.UserInput }))
+                        Url.Action("PageImplement", new { page, Model.UserInput }))
         </div>
 
     }

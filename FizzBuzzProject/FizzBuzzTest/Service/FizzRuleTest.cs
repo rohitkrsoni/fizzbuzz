@@ -12,68 +12,41 @@ namespace FizzBuzzTest.Service
     [TestClass]
     public class FizzRuleTest
     {
-        public Mock<IRule> mockService;
-        public Mock<IDayService> mockDayService;
 
-        [TestMethod]
-        public void Whether_IsMatch_Provides_Expected_Value_Multiples_Of_3()
+        [DataTestMethod]
+        [DataRow(DayOfWeek.Wednesday, "Wizz")]
+        [DataRow(DayOfWeek.Monday, "Fizz")]
+        public void Whether_Execute_Provides_Expected_Output(DayOfWeek dayOfWeek, string expectations)
         {
             //Arrange
-            var mockService = new Mock<IRule>();
-            mockService.Setup(x => x.IsMatch(It.Is<int>(i => i % 3 == 0))).Returns(true);
-
-
-            //Act
-            bool actual = mockService.Object.IsMatch(3);
-
-            //Assert
-            Assert.IsTrue(actual);
-        }
-        [TestMethod]
-        public void Whether_IsMatch_Provides_Expected_Value_for_Non_Multiples_Of_3()
-        {
-            //Arrange
-            var mockService = new Mock<IRule>();
-            mockService.Setup(x => x.IsMatch(It.Is<int>(i => i % 3 == 0))).Returns(true);
-
-
-            //Act
-            bool actual = mockService.Object.IsMatch(5);
-
-            //Assert
-            Assert.IsTrue(!actual);
-        }
-        [TestMethod]
-        public void Whether_Execute_Provides_Expected_Value_For_Wednesday()
-        {
-            //Arrange
-            var mockService = new Mock<IRule>();
             var mockDayService = new Mock<IDayService>();
-            mockDayService.Setup(x => x.GetTodayDay()).Returns(3);
-            mockService.Setup(x => x.Execute()).Returns(mockDayService.Object.GetTodayDay() != 3 ? "Fizz" : "Wizz");
-
+            mockDayService.Setup(x => x.GetTodayDay()).Returns(dayOfWeek);
+            var rule = new FizzRule(mockDayService.Object);
 
             //Act
-            string actual = mockService.Object.Execute();
+            string actual = rule.Execute();
 
             //Assert
-            Assert.AreEqual(actual, "Wizz");
+            Assert.AreEqual(actual, expectations);
         }
-        [TestMethod]
-        public void Whether_Execute_Provides_Expected_Value_For_Non_Wednesday()
+        [DataTestMethod]
+        [DataRow(1, false)]
+        [DataRow(3, true)]
+        [DataRow(5, false)]
+        [DataRow(15, false)]
+        public void Whether_IsMatch_Provides_Expected_Output(int numbers, bool expectations)
         {
             //Arrange
-            var mockService = new Mock<IRule>();
             var mockDayService = new Mock<IDayService>();
-            mockDayService.Setup(x => x.GetTodayDay()).Returns(4);
-            mockService.Setup(x => x.Execute()).Returns(mockDayService.Object.GetTodayDay() != 3 ? "Fizz" : "Wizz");
-
+            var rule = new FizzRule(mockDayService.Object);
 
             //Act
-            string actual = mockService.Object.Execute();
+            bool actual = rule.IsMatch(numbers);
 
             //Assert
-            Assert.AreEqual(actual, "Fizz");
+            Assert.IsTrue(expectations==actual);
+
         }
+
     }
 }

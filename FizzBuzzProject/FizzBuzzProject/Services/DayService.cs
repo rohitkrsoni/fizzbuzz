@@ -7,9 +7,9 @@ namespace FizzBuzzProject.Services
 {
     public class DayService : IDayService
     {
-        public int GetTodayDay()
+        public DayOfWeek GetTodayDay()
         {
-            return (int)DateTime.Today.DayOfWeek;
+            return DateTime.Today.DayOfWeek;
         }
     }
 }

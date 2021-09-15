@@ -1,4 +1,10 @@
-﻿.Fizz {
+﻿.cen {
+    margin: auto;
+    width: 0%;
+}
+
+
+.Fizz {
     color: blue;
 }
 

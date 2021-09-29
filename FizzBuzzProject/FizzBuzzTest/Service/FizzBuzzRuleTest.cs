@@ -1,45 +1,44 @@
-﻿using FizzBuzzProject.Services;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FizzBuzzTest.Service
+﻿namespace FizzBuzzTest.Service
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using FizzBuzzProject.Services;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using Moq;
+
     [TestClass]
     public class FizzBuzzRuleTest
     {
-
         [DataTestMethod]
         [DataRow(1, false)]
         [DataRow(3, false)]
         [DataRow(5, false)]
         [DataRow(15, true)]
-        public void Whether_IsMatch_Provides_Expected_Output(int numbers,bool expectaions)
+        public void Whether_IsMatch_Provides_Expected_Output(int numbers, bool expectaions)
         {
-            //Arrange
+            // Arrange
             var rule = new FizzBuzzRule();
 
-            //Act
+            // Act
             bool actual = rule.IsMatch(numbers);
 
-            //Assert
-            Assert.IsTrue(actual==expectaions);
+            // Assert
+            Assert.IsTrue(actual == expectaions);
         }
 
-       [TestMethod]
+        [TestMethod]
         public void Whether_Execute_Provides_Expected_Value()
         {
-            //Arrange
+            // Arrange
             var rule = new FizzBuzzRule();
 
-            //Act
+            // Act
             string actual = rule.Execute();
 
-            //Assert
+            // Assert
             Assert.AreEqual(actual, "FizzBuzz");
         }
     }

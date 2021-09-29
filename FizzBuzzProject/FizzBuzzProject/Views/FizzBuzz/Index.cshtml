@@ -5,6 +5,7 @@
     ViewBag.Title = "Fizz Buzz";
 }
 <form asp-controller="FizzBuzz" asp-action="index" method="post" class="">
+    @Html.AntiForgeryToken()
     <div class="form-group row container col-sm-12 text-center">
         <label asp-for="UserInput" class=" col-form-label col-sm-3">Enter a Number</label>
         <div class="col-sm-5 col">
@@ -16,7 +17,7 @@
 
 </form>
 <hr>
-@{ if (Model != null && Model.FizzBuzzNumbers != null)
+@{ if (Model?.FizzBuzzNumbers != null)
     {
         <div class="container ">
 
@@ -27,8 +28,21 @@
         </div>
         <div class="cen pagination h4">
             @Html.PagedListPager((IPagedList)Model.FizzBuzzNumbers, page =>
-                        Url.Action("PageImplement", new { page, Model.UserInput }))
+                        Url.Action("GetFizzBuzzNumbersUsingPages", new { page, Model.UserInput }))
         </div>
 
     }
 }
+//rename project only FizzBuzz.app - done
+//FizzBuzz.App.Test - done
+//csProjfile rename - domdf e
+//getFizzBuzzNumbersonUsingPages - done
+//yield for returning - done
+//Model?.FizzBuzzz.isAny()==true - done
+//Anti forgery validation-done
+
+//wednesday - maybe
+
+
+
+//stylecop

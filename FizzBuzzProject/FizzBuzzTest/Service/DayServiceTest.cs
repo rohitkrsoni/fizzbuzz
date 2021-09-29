@@ -1,30 +1,29 @@
-﻿using FizzBuzzProject.Services;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FizzBuzzTest.Service
+﻿namespace FizzBuzzTest.Service
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using FizzBuzzProject.Services;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using Moq;
+
     [TestClass]
     public class DayServiceTest
     {
         [TestMethod]
-        public void Whether_GetTodayDay_Provides_Expected_Value_For_Wednesday()
+        public void Whether_GetTodayDay_Provides_Expected_Value()
         {
-            //Arrange
+            // Arrange
             var dayService = new DayService();
-
-            //Act
-            DayOfWeek actual = dayService.GetTodayDay();
             DayOfWeek expected = DateTime.Today.DayOfWeek;
 
-            //Assert
+            // Act
+            DayOfWeek actual = dayService.GetTodayDay();
+
+            // Assert
             Assert.AreEqual(expected, actual);
         }
-       
     }
 }

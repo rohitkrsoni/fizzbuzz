@@ -1,27 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace FizzBuzzProject.Services
+﻿namespace FizzBuzzProject.Services
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+
     public class BuzzRule : IRule
     {
-        public IDayService DayService;
-        public BuzzRule(IDayService DayService)
+        private readonly IDayService dayService;
+
+        public BuzzRule(IDayService dayService)
         {
-            this.DayService = DayService;
+            this.dayService = dayService;
         }
+
         public string Execute()
         {
-            if (DayService.GetTodayDay() == DayOfWeek.Wednesday)
+            if (dayService.GetTodayDay() == DayOfWeek.Wednesday)
+            {
                 return "Wuzz";
+            }
+
             return "Buzz";
         }
 
         public bool IsMatch(int number)
         {
-            return (number % 5 == 0&& number%3!=0);
+            return number % 5 == 0 && number % 3 != 0;
         }
     }
 }

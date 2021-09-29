@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace FizzBuzzProject.Services
+﻿namespace FizzBuzzProject.Services
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+
     public class FizzBuzzService : IFizzBuzzService
     {
         private readonly IEnumerable<IRule> rules;
@@ -13,6 +13,7 @@ namespace FizzBuzzProject.Services
         {
             this.rules = rules;
         }
+
         public IEnumerable<string> GetFizzBuzzNumbers(int input)
         {
             var fizzBuzzNumbers = new List<string>();
@@ -20,9 +21,8 @@ namespace FizzBuzzProject.Services
             {
                 var applicableRules = rules.FirstOrDefault(x => x.IsMatch(i));
                 var fizzBuzzNumber = applicableRules != null ? applicableRules.Execute() : i.ToString();
-                fizzBuzzNumbers.Add(fizzBuzzNumber);
+                yield return fizzBuzzNumber;
             }
-            return fizzBuzzNumbers;
         }
     }
 }

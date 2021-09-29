@@ -23,13 +23,13 @@
 
             @foreach (var fizzBuzzNumber in Model.FizzBuzzNumbers)
             {
-                <h4 class="@fizzBuzzNumber">@fizzBuzzNumber</h4>}
+                <h4 class="@fizzBuzzNumber">@fizzBuzzNumber</h4>
+            }
 
         </div>
         <div class="cen pagination h4">
             @Html.PagedListPager((IPagedList)Model.FizzBuzzNumbers, page =>
                         Url.Action("GetFizzBuzzNumbersUsingPages", new { page, Model.UserInput }))
         </div>
-
     }
 }
